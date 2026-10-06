@@ -1,0 +1,34 @@
+name: Calculator Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test Addition
+        run: |
+          printf "10\n5\n+\n" | python calculator.py
+
+      - name: Test Subtraction
+        run: |
+          printf "10\n5\n-\n" | python calculator.py
+
+      - name: Test Multiplication
+        run: |
+          printf "10\n5\n*\n" | python calculator.py
+
+      - name: Test Division
+        run: |
+          printf "10\n5\n/\n" | python calculator.py
